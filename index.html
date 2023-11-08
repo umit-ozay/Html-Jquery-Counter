@@ -1,0 +1,33 @@
+
+            <h2 class="counter" data-target="53">0</h2>
+            <h2 class="counter" data-target="2258">0</h2>     
+            <h2 class="counter" data-target="4509129">0</h2>        
+            <h2 class="counter" data-target="7">0</h2>
+
+			
+	    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	   <script>
+         function startCount() {
+             $('.counter').each(function () {
+                 var $this = $(this);
+                 var target = parseInt($this.attr('data-target'));
+                 $({ countNum: $this.text() }).animate(
+                     { countNum: target },
+                     {
+                         duration: 10000,
+                         easing: 'linear',
+                         step: function () {
+                             $this.text(Math.floor(this.countNum));
+                         },
+                         complete: function () {
+                             $this.text(target);
+                         }
+                     }
+                 );
+             });
+         }
+         
+         $(document).ready(function () {
+             startCount();
+         });
+      </script>
